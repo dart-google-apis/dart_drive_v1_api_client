@@ -20,13 +20,13 @@ class FilesResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<File> get(String id, {String projection, bool updateViewedDate, Map optParams}) {
-    var completer = new Completer();
+  async.Future<File> get(core.String id, {core.String projection, core.bool updateViewedDate, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "files/{id}";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (id == null) paramErrors.add("id is required");
     if (id != null) urlParams["id"] = id;
     if (projection != null && !["BASIC", "FULL"].contains(projection)) {
@@ -66,14 +66,14 @@ class FilesResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<File> insert(File request, {String content, String contentType, Map optParams}) {
-    var completer = new Completer();
+  async.Future<File> insert(File request, {core.String content, core.String contentType, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "files";
     var uploadUrl = "/upload/drive/v1/files";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (optParams != null) {
       optParams.forEach((key, value) {
         if (value != null && queryParams[key] == null) {
@@ -117,13 +117,13 @@ class FilesResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<File> patch(File request, String id, {bool newRevision, bool updateModifiedDate, bool updateViewedDate, Map optParams}) {
-    var completer = new Completer();
+  async.Future<File> patch(File request, core.String id, {core.bool newRevision, core.bool updateModifiedDate, core.bool updateViewedDate, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "files/{id}";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (id == null) paramErrors.add("id is required");
     if (id != null) urlParams["id"] = id;
     if (newRevision != null) queryParams["newRevision"] = newRevision;
@@ -172,14 +172,14 @@ class FilesResource extends Resource {
    *
    * [optParams] - Additional query parameters
    */
-  Future<File> update(File request, String id, {String content, String contentType, bool newRevision, bool updateModifiedDate, bool updateViewedDate, Map optParams}) {
-    var completer = new Completer();
+  async.Future<File> update(File request, core.String id, {core.String content, core.String contentType, core.bool newRevision, core.bool updateModifiedDate, core.bool updateViewedDate, core.Map optParams}) {
+    var completer = new async.Completer();
     var url = "files/{id}";
     var uploadUrl = "/upload/drive/v1/files/{id}";
-    var urlParams = new Map();
-    var queryParams = new Map();
+    var urlParams = new core.Map();
+    var queryParams = new core.Map();
 
-    var paramErrors = new List();
+    var paramErrors = new core.List();
     if (id == null) paramErrors.add("id is required");
     if (id != null) urlParams["id"] = id;
     if (newRevision != null) queryParams["newRevision"] = newRevision;

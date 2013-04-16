@@ -4,65 +4,65 @@ part of drive_v1_api_client;
 class File {
 
   /** Create time for this file (formatted ISO8601 timestamp). */
-  String createdDate;
+  core.String createdDate;
 
   /** A short description of the file */
-  String description;
+  core.String description;
 
   /** Short term download URL for the file. This will only be populated on files with content stored in Drive. */
-  String downloadUrl;
+  core.String downloadUrl;
 
   /** ETag of the file. */
-  String etag;
+  core.String etag;
 
   /** The file extension used when downloading this file. This field is read only. To set the extension, include it on title when creating the file. This will only be populated on files with content stored in Drive. */
-  String fileExtension;
+  core.String fileExtension;
 
   /** The size of the file in bytes. This will only be populated on files with content stored in Drive. */
-  String fileSize;
+  core.String fileSize;
 
   /** The id of the file. */
-  String id;
+  core.String id;
 
   /** Indexable text attributes for the file (can only be written) */
   FileIndexableText indexableText;
 
   /** The type of file. This is always drive#file */
-  String kind;
+  core.String kind;
 
   /** Labels for the file. */
   FileLabels labels;
 
   /** Last time this file was viewed by the user (formatted RFC 3339 timestamp). */
-  String lastViewedDate;
+  core.String lastViewedDate;
 
   /** An MD5 checksum for the content of this file. This will only be populated on files with content stored in Drive. */
-  String md5Checksum;
+  core.String md5Checksum;
 
   /** The mimetype of the file */
-  String mimeType;
+  core.String mimeType;
 
   /** Last time this file was modified by the user (formatted RFC 3339 timestamp). */
-  String modifiedByMeDate;
+  core.String modifiedByMeDate;
 
   /** Last time this file was modified by anyone (formatted RFC 3339 timestamp). */
-  String modifiedDate;
+  core.String modifiedDate;
 
   /** Collection of parent folders which contain this file.
 On insert, setting this field will put the file in all of the provided folders. If no folders are provided, the file will be placed in the default root folder. On update, this field is ignored. */
-  List<FileParentsCollection> parentsCollection;
+  core.List<FileParentsCollection> parentsCollection;
 
   /** A link back to this file. */
-  String selfLink;
+  core.String selfLink;
 
   /** The title of this file. */
-  String title;
+  core.String title;
 
   /** The permissions for the authenticated user on this file. */
   Permission userPermission;
 
   /** Create new File from JSON data */
-  File.fromJson(Map json) {
+  File.fromJson(core.Map json) {
     if (json.containsKey("createdDate")) {
       createdDate = json["createdDate"];
     }
@@ -126,8 +126,8 @@ On insert, setting this field will put the file in all of the provided folders. 
   }
 
   /** Create JSON Object for File */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (createdDate != null) {
       output["createdDate"] = createdDate;
@@ -175,7 +175,7 @@ On insert, setting this field will put the file in all of the provided folders. 
       output["modifiedDate"] = modifiedDate;
     }
     if (parentsCollection != null) {
-      output["parentsCollection"] = new List();
+      output["parentsCollection"] = new core.List();
       parentsCollection.forEach((item) {
         output["parentsCollection"].add(item.toJson());
       });
@@ -194,7 +194,7 @@ On insert, setting this field will put the file in all of the provided folders. 
   }
 
   /** Return String representation of File */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
@@ -202,16 +202,16 @@ On insert, setting this field will put the file in all of the provided folders. 
 class FileLabels {
 
   /** Whether this file is hidden from the user */
-  bool hidden;
+  core.bool hidden;
 
   /** Whether this file is starred by the user. */
-  bool starred;
+  core.bool starred;
 
   /** Whether this file has been trashed. */
-  bool trashed;
+  core.bool trashed;
 
   /** Create new FileLabels from JSON data */
-  FileLabels.fromJson(Map json) {
+  FileLabels.fromJson(core.Map json) {
     if (json.containsKey("hidden")) {
       hidden = json["hidden"];
     }
@@ -224,8 +224,8 @@ class FileLabels {
   }
 
   /** Create JSON Object for FileLabels */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (hidden != null) {
       output["hidden"] = hidden;
@@ -241,7 +241,7 @@ class FileLabels {
   }
 
   /** Return String representation of FileLabels */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
@@ -249,18 +249,18 @@ class FileLabels {
 class FileIndexableText {
 
   /** The text to be indexed for this file */
-  String text;
+  core.String text;
 
   /** Create new FileIndexableText from JSON data */
-  FileIndexableText.fromJson(Map json) {
+  FileIndexableText.fromJson(core.Map json) {
     if (json.containsKey("text")) {
       text = json["text"];
     }
   }
 
   /** Create JSON Object for FileIndexableText */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (text != null) {
       output["text"] = text;
@@ -270,20 +270,20 @@ class FileIndexableText {
   }
 
   /** Return String representation of FileIndexableText */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
 class FileParentsCollection {
 
   /** The id of this parent */
-  String id;
+  core.String id;
 
   /** A link to get the metadata for this parent */
-  String parentLink;
+  core.String parentLink;
 
   /** Create new FileParentsCollection from JSON data */
-  FileParentsCollection.fromJson(Map json) {
+  FileParentsCollection.fromJson(core.Map json) {
     if (json.containsKey("id")) {
       id = json["id"];
     }
@@ -293,8 +293,8 @@ class FileParentsCollection {
   }
 
   /** Create JSON Object for FileParentsCollection */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (id != null) {
       output["id"] = id;
@@ -307,7 +307,7 @@ class FileParentsCollection {
   }
 
   /** Return String representation of FileParentsCollection */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
@@ -315,22 +315,22 @@ class FileParentsCollection {
 class Permission {
 
   /** Any additional roles that this permission describes. */
-  List<String> additionalRoles;
+  core.List<core.String> additionalRoles;
 
   /** An etag for this permission. */
-  String etag;
+  core.String etag;
 
   /** The kind of this permission. This is always drive#permission */
-  String kind;
+  core.String kind;
 
   /** The role that this permission describes. (For example: reader, writer, owner) */
-  String role;
+  core.String role;
 
   /** The type of permission (For example: user, group etc). */
-  String type;
+  core.String type;
 
   /** Create new Permission from JSON data */
-  Permission.fromJson(Map json) {
+  Permission.fromJson(core.Map json) {
     if (json.containsKey("additionalRoles")) {
       additionalRoles = [];
       json["additionalRoles"].forEach((item) {
@@ -352,11 +352,11 @@ class Permission {
   }
 
   /** Create JSON Object for Permission */
-  Map toJson() {
-    var output = new Map();
+  core.Map toJson() {
+    var output = new core.Map();
 
     if (additionalRoles != null) {
-      output["additionalRoles"] = new List();
+      output["additionalRoles"] = new core.List();
       additionalRoles.forEach((item) {
         output["additionalRoles"].add(item);
       });
@@ -378,7 +378,7 @@ class Permission {
   }
 
   /** Return String representation of Permission */
-  String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.stringify(this.toJson());
 
 }
 
