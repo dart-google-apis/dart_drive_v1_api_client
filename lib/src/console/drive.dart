@@ -4,8 +4,8 @@ part of drive_v1_api_console;
 /** The API to interact with Drive. */
 class Drive extends ConsoleClient {
 
-  FilesResource _files;
-  FilesResource get files => _files;
+  FilesResource_ _files;
+  FilesResource_ get files => _files;
 
   /** OAuth Scope2: View and manage Google Drive files that you have opened or created with this app */
   static const core.String DRIVE_FILE_SCOPE = "https://www.googleapis.com/auth/drive.file";
@@ -62,6 +62,6 @@ class Drive extends ConsoleClient {
   Drive([oauth2.OAuth2Console auth]) : super(auth) {
     basePath = "/drive/v1/";
     rootUrl = "https://www.googleapis.com:443/";
-    _files = new FilesResource(this);
+    _files = new FilesResource_(this);
   }
 }
