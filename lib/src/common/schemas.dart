@@ -19,7 +19,7 @@ class File {
   core.String fileExtension;
 
   /** The size of the file in bytes. This will only be populated on files with content stored in Drive. */
-  core.String fileSize;
+  core.int fileSize;
 
   /** The id of the file. */
   core.String id;

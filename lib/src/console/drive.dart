@@ -61,7 +61,7 @@ class Drive extends ConsoleClient {
 
   Drive([oauth2.OAuth2Console auth]) : super(auth) {
     basePath = "/drive/v1/";
-    rootUrl = "https://www.googleapis.com:443/";
+    rootUrl = "https://www.googleapis.com/";
     _files = new FilesResource_(this);
   }
 }
