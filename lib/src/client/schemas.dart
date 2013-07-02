@@ -79,7 +79,11 @@ On insert, setting this field will put the file in all of the provided folders. 
       fileExtension = json["fileExtension"];
     }
     if (json.containsKey("fileSize")) {
-      fileSize = json["fileSize"];
+      if(json["fileSize"] is core.String){
+        fileSize = core.int.parse(json["fileSize"]);
+      }else{
+        fileSize = json["fileSize"];
+      }
     }
     if (json.containsKey("id")) {
       id = json["id"];

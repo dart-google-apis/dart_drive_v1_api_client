@@ -21,7 +21,6 @@ class FilesResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<File> get(core.String id, {core.String projection, core.bool updateViewedDate, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "files/{id}";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -43,16 +42,13 @@ class FilesResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "GET", urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new File.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new File.fromJson(data));
   }
 
   /**
@@ -67,7 +63,6 @@ class FilesResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<File> insert(File request, {core.String content, core.String contentType, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "files";
     var uploadUrl = "/upload/drive/v1/files";
     var urlParams = new core.Map();
@@ -83,8 +78,7 @@ class FilesResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
@@ -93,10 +87,8 @@ class FilesResource_ extends Resource {
     } else {
       response = _client.request(url, "POST", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
     }
-    response
-      .then((data) => completer.complete(new File.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new File.fromJson(data));
   }
 
   /**
@@ -118,7 +110,6 @@ class FilesResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<File> patch(File request, core.String id, {core.bool newRevision, core.bool updateModifiedDate, core.bool updateViewedDate, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "files/{id}";
     var urlParams = new core.Map();
     var queryParams = new core.Map();
@@ -138,16 +129,13 @@ class FilesResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
     response = _client.request(url, "PATCH", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
-    response
-      .then((data) => completer.complete(new File.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new File.fromJson(data));
   }
 
   /**
@@ -173,7 +161,6 @@ class FilesResource_ extends Resource {
    * [optParams] - Additional query parameters
    */
   async.Future<File> update(File request, core.String id, {core.String content, core.String contentType, core.bool newRevision, core.bool updateModifiedDate, core.bool updateViewedDate, core.Map optParams}) {
-    var completer = new async.Completer();
     var url = "files/{id}";
     var uploadUrl = "/upload/drive/v1/files/{id}";
     var urlParams = new core.Map();
@@ -194,8 +181,7 @@ class FilesResource_ extends Resource {
     }
 
     if (!paramErrors.isEmpty) {
-      completer.completeError(new core.ArgumentError(paramErrors.join(" / ")));
-      return completer.future;
+      throw new core.ArgumentError(paramErrors.join(" / "));
     }
 
     var response;
@@ -204,10 +190,8 @@ class FilesResource_ extends Resource {
     } else {
       response = _client.request(url, "PUT", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
     }
-    response
-      .then((data) => completer.complete(new File.fromJson(data)))
-      .catchError((e) { completer.completeError(e); return true; });
-    return completer.future;
+    return response
+      .then((data) => new File.fromJson(data));
   }
 }
 
