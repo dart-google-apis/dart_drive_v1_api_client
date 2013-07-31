@@ -1,4 +1,4 @@
-part of drive_v1_api_client;
+part of drive_v1_api;
 
 /** The metadata for a file. */
 class File {
@@ -79,11 +79,7 @@ On insert, setting this field will put the file in all of the provided folders. 
       fileExtension = json["fileExtension"];
     }
     if (json.containsKey("fileSize")) {
-      if(json["fileSize"] is core.String){
-        fileSize = core.int.parse(json["fileSize"]);
-      }else{
-        fileSize = json["fileSize"];
-      }
+      fileSize = (json["fileSize"] is core.String) ? core.int.parse(json["fileSize"]) : json["fileSize"];
     }
     if (json.containsKey("id")) {
       id = json["id"];
@@ -113,10 +109,7 @@ On insert, setting this field will put the file in all of the provided folders. 
       modifiedDate = json["modifiedDate"];
     }
     if (json.containsKey("parentsCollection")) {
-      parentsCollection = [];
-      json["parentsCollection"].forEach((item) {
-        parentsCollection.add(new FileParentsCollection.fromJson(item));
-      });
+      parentsCollection = json["parentsCollection"].map((parentsCollectionItem) => new FileParentsCollection.fromJson(parentsCollectionItem)).toList();
     }
     if (json.containsKey("selfLink")) {
       selfLink = json["selfLink"];
@@ -179,10 +172,7 @@ On insert, setting this field will put the file in all of the provided folders. 
       output["modifiedDate"] = modifiedDate;
     }
     if (parentsCollection != null) {
-      output["parentsCollection"] = new core.List();
-      parentsCollection.forEach((item) {
-        output["parentsCollection"].add(item.toJson());
-      });
+      output["parentsCollection"] = parentsCollection.map((parentsCollectionItem) => parentsCollectionItem.toJson()).toList();
     }
     if (selfLink != null) {
       output["selfLink"] = selfLink;
@@ -198,6 +188,35 @@ On insert, setting this field will put the file in all of the provided folders. 
   }
 
   /** Return String representation of File */
+  core.String toString() => JSON.stringify(this.toJson());
+
+}
+
+/** Indexable text attributes for the file (can only be written) */
+class FileIndexableText {
+
+  /** The text to be indexed for this file */
+  core.String text;
+
+  /** Create new FileIndexableText from JSON data */
+  FileIndexableText.fromJson(core.Map json) {
+    if (json.containsKey("text")) {
+      text = json["text"];
+    }
+  }
+
+  /** Create JSON Object for FileIndexableText */
+  core.Map toJson() {
+    var output = new core.Map();
+
+    if (text != null) {
+      output["text"] = text;
+    }
+
+    return output;
+  }
+
+  /** Return String representation of FileIndexableText */
   core.String toString() => JSON.stringify(this.toJson());
 
 }
@@ -245,35 +264,6 @@ class FileLabels {
   }
 
   /** Return String representation of FileLabels */
-  core.String toString() => JSON.stringify(this.toJson());
-
-}
-
-/** Indexable text attributes for the file (can only be written) */
-class FileIndexableText {
-
-  /** The text to be indexed for this file */
-  core.String text;
-
-  /** Create new FileIndexableText from JSON data */
-  FileIndexableText.fromJson(core.Map json) {
-    if (json.containsKey("text")) {
-      text = json["text"];
-    }
-  }
-
-  /** Create JSON Object for FileIndexableText */
-  core.Map toJson() {
-    var output = new core.Map();
-
-    if (text != null) {
-      output["text"] = text;
-    }
-
-    return output;
-  }
-
-  /** Return String representation of FileIndexableText */
   core.String toString() => JSON.stringify(this.toJson());
 
 }
@@ -336,10 +326,7 @@ class Permission {
   /** Create new Permission from JSON data */
   Permission.fromJson(core.Map json) {
     if (json.containsKey("additionalRoles")) {
-      additionalRoles = [];
-      json["additionalRoles"].forEach((item) {
-        additionalRoles.add(item);
-      });
+      additionalRoles = json["additionalRoles"].toList();
     }
     if (json.containsKey("etag")) {
       etag = json["etag"];
@@ -360,10 +347,7 @@ class Permission {
     var output = new core.Map();
 
     if (additionalRoles != null) {
-      output["additionalRoles"] = new core.List();
-      additionalRoles.forEach((item) {
-        output["additionalRoles"].add(item);
-      });
+      output["additionalRoles"] = additionalRoles.toList();
     }
     if (etag != null) {
       output["etag"] = etag;
@@ -386,3 +370,16 @@ class Permission {
 
 }
 
+core.Map _mapMap(core.Map source, [core.Object convert(core.Object source) = null]) {
+  assert(source != null);
+  var result = new dart_collection.LinkedHashMap();
+  source.forEach((core.String key, value) {
+    assert(key != null);
+    if(convert == null) {
+      result[key] = value;
+    } else {
+      result[key] = convert(value);
+    }
+  });
+  return result;
+}

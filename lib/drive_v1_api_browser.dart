@@ -1,14 +1,17 @@
-library drive_v1_api_browser;
+library drive_v1_api.browser;
 
-import "drive_v1_api_client.dart";
-export "drive_v1_api_client.dart";
-
-import "dart:core" as core;
-import "dart:html" as html;
-import "dart:async" as async;
-import "dart:json" as JSON;
-import "package:js/js.dart" as js;
 import "package:google_oauth2_client/google_oauth2_browser.dart" as oauth;
 
-part "src/browser/browser_client.dart";
-part "src/browser/drive.dart";
+import 'package:google_drive_v1_api/src/cloud_api_browser.dart';
+import "package:google_drive_v1_api/drive_v1_api_client.dart";
+
+/** The API to interact with Drive. */
+class Drive extends Client with BrowserClient {
+
+  /** OAuth Scope2: View and manage Google Drive files that you have opened or created with this app */
+  static const String DRIVE_FILE_SCOPE = "https://www.googleapis.com/auth/drive.file";
+
+  final oauth.OAuth2 auth;
+
+  Drive([oauth.OAuth2 this.auth]);
+}

@@ -1,9 +1,11 @@
-part of drive_v1_api_client;
+part of drive_v1_api;
 
-class FilesResource_ extends Resource {
+class FilesResource_ {
 
-  FilesResource_(Client client) : super(client) {
-  }
+  final Client _client;
+
+  FilesResource_(Client client) :
+      _client = client;
 
   /**
    * Gets a file's metadata by id.
@@ -82,7 +84,7 @@ class FilesResource_ extends Resource {
     }
 
     var response;
-    if (?content && content != null) {
+    if (content != null) {
       response = _client.upload(uploadUrl, "POST", request.toString(), content, contentType, urlParams: urlParams, queryParams: queryParams);
     } else {
       response = _client.request(url, "POST", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
@@ -185,7 +187,7 @@ class FilesResource_ extends Resource {
     }
 
     var response;
-    if (?content && content != null) {
+    if (content != null) {
       response = _client.upload(uploadUrl, "PUT", request.toString(), content, contentType, urlParams: urlParams, queryParams: queryParams);
     } else {
       response = _client.request(url, "PUT", body: request.toString(), urlParams: urlParams, queryParams: queryParams);
