@@ -188,7 +188,7 @@ On insert, setting this field will put the file in all of the provided folders. 
   }
 
   /** Return String representation of File */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -217,7 +217,7 @@ class FileIndexableText {
   }
 
   /** Return String representation of FileIndexableText */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -264,7 +264,7 @@ class FileLabels {
   }
 
   /** Return String representation of FileLabels */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -301,7 +301,7 @@ class FileParentsCollection {
   }
 
   /** Return String representation of FileParentsCollection */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
@@ -366,7 +366,7 @@ class Permission {
   }
 
   /** Return String representation of Permission */
-  core.String toString() => JSON.stringify(this.toJson());
+  core.String toString() => JSON.encode(this.toJson());
 
 }
 
