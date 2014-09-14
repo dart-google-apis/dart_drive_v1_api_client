@@ -3,7 +3,7 @@ part of drive_v1_api;
 /** The metadata for a file. */
 class File {
 
-  /** Create time for this file (formatted ISO8601 timestamp). */
+  /** Create time for this file (formatted RFC 3339 timestamp). */
   core.String createdDate;
 
   /** A short description of the file */
